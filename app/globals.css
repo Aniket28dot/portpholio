@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme {
+  --color-accent: #3b82f6;
+  --color-primary: #2563eb;
+  --color-secondary: #60a5fa;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  ::selection {
+    background-color: var(--color-accent);
+    color: white;
+  }
+
+  body {
+    @apply bg-white text-zinc-900;
+  }
+}
+
+.prose p {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose p:first-child {
+  margin-top: 0;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}

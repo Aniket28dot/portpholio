@@ -1,0 +1,5 @@
+{
+  "name": "Minimal Portfolio & AI Assistant",
+  "description": "A clean, minimal personal portfolio featuring a timeline, project showcase, and a Gemini-powered AI assistant that knows my background.",
+  "requestFramePermissions": []
+}
