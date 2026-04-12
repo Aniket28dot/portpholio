@@ -4,10 +4,10 @@ export const portfolioData = {
   bio: "I try to build high-performance web applications with a focus on clean architecture and exceptional user experiences. Based in Mumbai, I specialize in backend development using Python and AI integrations.",
   profileImage: "/profile_pic.png",
   socials: [
-    { name: "GitHub", url: "https://github.com/Aniket28dot", icon: "Github" },
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/aniket-bhatia-1b04811bb/", icon: "Linkedin" },
-    { name: "Twitter", url: "https://x.com/aniketbhatia28", icon: "Twitter" },
-    { name: "Email", url: "mailto:work.aniketbhatia28@gmail.com", icon: "Mail" }
+    { name: "GitHub", url: "https://github.com/Aniket28dot", icon: "Github" as const },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/aniket-bhatia-1b04811bb/", icon: "Linkedin" as const },
+    { name: "Twitter", url: "https://x.com/aniketbhatia28", icon: "Twitter" as const },
+    { name: "Email", url: "mailto:work.aniketbhatia28@gmail.com", icon: "Mail" as const }
   ],
   experience: [
     {
