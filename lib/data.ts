@@ -2,7 +2,7 @@ export const portfolioData = {
   name: "Aniket Bhatia",
   role: "Backend Developer",
   bio: "I try to build high-performance web applications with a focus on clean architecture and exceptional user experiences. Based in Mumbai, I specialize in backend development using Python and AI integrations.",
-  profileImage: "/profile_pic.png",
+  profileImage: "/profile_image_canva_edit.png",
   socials: [
     { name: "GitHub", url: "https://github.com/Aniket28dot", icon: "Github" as const },
     { name: "LinkedIn", url: "https://www.linkedin.com/in/aniket-bhatia-1b04811bb/", icon: "Linkedin" as const },
