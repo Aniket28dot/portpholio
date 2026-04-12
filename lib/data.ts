@@ -1,51 +1,51 @@
 export const portfolioData = {
-  name: "Alex Chen",
-  role: "Senior Full Stack Engineer",
-  bio: "I build high-performance web applications with a focus on clean architecture and exceptional user experiences. Based in San Francisco, I specialize in React, Node.js, and AI integrations.",
+  name: "Aniket Bhatia",
+  role: "Backend Developer",
+  bio: "I try to build high-performance web applications with a focus on clean architecture and exceptional user experiences. Based in Mumbai, I specialize in backend development using Python and AI integrations.",
   profileImage: "/profile_pic.png",
   socials: [
-    { name: "GitHub", url: "https://github.com", icon: "Github" },
-    { name: "LinkedIn", url: "https://linkedin.com", icon: "Linkedin" },
-    { name: "Twitter", url: "https://twitter.com", icon: "Twitter" },
-    { name: "Email", url: "mailto:alex@example.com", icon: "Mail" }
+    { name: "GitHub", url: "https://github.com/Aniket28dot", icon: "Github" },
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/aniket-bhatia-1b04811bb/", icon: "Linkedin" },
+    { name: "Twitter", url: "https://x.com/aniketbhatia28", icon: "Twitter" },
+    { name: "Email", url: "mailto:work.aniketbhatia28@gmail.com", icon: "Mail" }
   ],
   experience: [
     {
-      company: "TechFlow Systems",
-      role: "Senior Software Engineer",
-      period: "2022 - Present",
-      description: "Leading the frontend team in developing a real-time collaborative design tool. Improved application performance by 40% through strategic state management and code splitting.",
-      skills: ["React", "TypeScript", "WebSockets", "Node.js"]
+      company: "BPCL",
+      role: "Backend Developer",
+      period: "2024 - Present",
+      description: "Leading the backend for quick-commerce vertical of the organization",
+      skills: ["Python", "FastAPI", "Azure/AWS Cloud", "Redis", "Elasticsearch", "Object Oriented Design"]
     },
     {
-      company: "Innovate AI",
-      role: "Full Stack Developer",
-      period: "2020 - 2022",
-      description: "Developed and deployed multiple LLM-powered features for a customer support platform. Scaled the backend infrastructure to handle 1M+ monthly active users.",
-      skills: ["Next.js", "Python", "PostgreSQL", "OpenAI API"]
+      company: "Code4GovTech",
+      role: "Open Source Developer",
+      period: "July'23 - August'23",
+      description: "Developed a WhatsApp-based appointment booking system for Bahmni, a healthcare management system",
+      skills: ["Java", "Springboot", "Meta SDK", "Meta Graph APIs"]
     },
     {
-      company: "StartUp Hub",
-      role: "Junior Developer",
-      period: "2018 - 2020",
-      description: "Built responsive landing pages and internal dashboards. Collaborated closely with designers to implement pixel-perfect UI components.",
-      skills: ["JavaScript", "CSS", "Vue.js", "Firebase"]
+      company: "DataHive Labs",
+      role: "SDE Intern",
+      period: "Jan'23 - June'23",
+      description: "Built doctor-patient engagement systems using AWS Cloud stack",
+      skills: ["Python", "Problem Solving", "API Integrations", "AWS Cloud"]
     }
   ],
   projects: [
     {
-      title: "AI Canvas",
-      problem: "Product teams struggled to turn rough ideas into clear technical diagrams during remote planning sessions.",
-      solution: "Built a collaborative whiteboard with AI-assisted shape generation, prompt-driven diagram suggestions, and real-time multiplayer sync.",
-      impact: "Cut planning time by 35% and increased design-to-build alignment across distributed teams.",
-      techStack: ["React", "TypeScript", "Canvas API", "WebSockets", "Gemini API"],
-      demoUrl: "https://example.com/ai-canvas",
-      codeUrl: "https://github.com/example/ai-canvas"
+      title: "NFR - Non Fuel Retail",
+      problem: "BPCL owned In-Out (I&O stores) faced challenges in penetrating the market with the rise of quick-commerce based solutions",
+      solution: "Developing a backend system using FastAPI that integrates with the existing inventory and sales systems to penetrate the relevant customers and reduce the cost of acquisition",
+      impact: "With this going live, the e-commerce vertical is expected to grow by 10-20% in the next year",
+      techStack: ["Python", "FastAPI", "PostgreSQL", "Redis", "Elasticsearch"],
+      demoUrl: "https://example.com/nfr",
+      codeUrl: "https://github.com/example/nfr"
     },
     {
-      title: "EcoTrack",
-      problem: "Users wanted sustainability insights but found manual carbon tracking tedious and inconsistent.",
-      solution: "Created a mobile-first tracker with OCR-based receipt scanning, automatic category mapping, and personalized reduction tips.",
+      title: "Seekers Feed",
+      problem: "Lack of a single platform for people seeking answers to some relevant questions",
+      solution: "A simple CMS based blog platform to help people seek answers to their questions",
       impact: "Improved weekly logging consistency by 2.4x and helped users reduce reported footprint by 18% in 3 months.",
       techStack: ["Next.js", "Tailwind CSS", "OCR", "PostgreSQL", "Server Actions"],
       demoUrl: "https://example.com/ecotrack",
@@ -62,10 +62,13 @@ export const portfolioData = {
     }
   ],
   interests: [
-    "Generative AI & LLMs",
+    "Backend Development",
+    "Problem Solving",
     "Clean Code & Architecture",
-    "Digital Minimalism",
-    "Mechanical Keyboards",
-    "Urban Photography"
+    "Yoga & Sportz",
+    "Mangoes during Summers",
+    "Pakodas during Rains",
+    "Soaking Sun during Winters",
+    "Blooming Trees during Spring"
   ]
 };

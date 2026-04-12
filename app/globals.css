@@ -17,7 +17,17 @@
   }
 
   body {
-    @apply bg-white text-zinc-900;
+    @apply bg-white text-zinc-900 text-justify;
+  }
+
+  /* Keep form fields readable; body justify would otherwise inherit */
+  textarea,
+  input[type="text"],
+  input[type="email"],
+  input[type="search"],
+  input[type="url"],
+  input[type="password"] {
+    text-align: left;
   }
 }
 

@@ -8,14 +8,14 @@ import { motion } from "motion/react";
 import { Mail, ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import * as React from "react";
-import {
-  defaultPortfolioContent,
-} from "@/lib/portfolio-content";
+import { defaultPortfolioContent } from "@/lib/portfolio-content";
 import { fetchPortfolioContent } from "@/lib/portfolio-cms";
 
 export default function Home() {
   const year = 2026;
-  const [portfolioData, setPortfolioData] = React.useState(defaultPortfolioContent);
+  const [portfolioData, setPortfolioData] = React.useState(
+    defaultPortfolioContent,
+  );
 
   React.useEffect(() => {
     let cancelled = false;
@@ -55,7 +55,7 @@ export default function Home() {
             <div className="flex items-center justify-center md:justify-start gap-2 text-zinc-600">
               <MapPin className="w-4 h-4 text-zinc-400" />
               <p className="text-sm font-medium text-zinc-700">
-                San Francisco, CA
+                Mumbai, Maharashtra
               </p>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function Home() {
                 Currently, I&apos;m focused on exploring the intersection of
                 human creativity and artificial intelligence. I believe that AI
                 should be a co-pilot, not a replacement, and I strive to build
-                interfaces that reflect this philosophy.
+                backend systems in a way that reflects this philosophy.
               </p>
             </div>
 
