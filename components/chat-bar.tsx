@@ -3,32 +3,15 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, Send, X, Loader2, User, Bot } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
 import ReactMarkdown from 'react-markdown';
 import type { PortfolioContent } from '@/lib/portfolio-content';
 
-const getSystemInstruction = (portfolioData: PortfolioContent) => `
-You are an AI assistant for ${portfolioData.name}'s personal portfolio. 
-Your goal is to answer questions about ${portfolioData.name}'s work experience, projects, skills, and interests.
-
-Context about ${portfolioData.name}:
-- Role: ${portfolioData.role}
-- Bio: ${portfolioData.bio}
-- Experience: ${JSON.stringify(portfolioData.experience)}
-- Projects: ${JSON.stringify(portfolioData.projects)}
-- Interests: ${portfolioData.interests.join(', ')}
-
-Guidelines:
-1. Be professional, friendly, and concise.
-2. If you don't know the answer based on the context, politely say you don't have that information and suggest contacting ${portfolioData.name} directly via the contact section.
-3. Keep responses relatively short (under 100 words).
-4. Use markdown for better formatting if needed.
-`;
+type ChatMessage = { role: 'user' | 'assistant'; content: string };
 
 export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [input, setInput] = React.useState('');
-  const [messages, setMessages] = React.useState<{ role: 'user' | 'assistant'; content: string }[]>([]);
+  const [messages, setMessages] = React.useState<ChatMessage[]>([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const scrollRef = React.useRef<HTMLDivElement>(null);
 
@@ -51,24 +34,21 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.NEXT_PUBLIC_GEMINI_API_KEY! });
-      
-      const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: [
-          ...messages.map(m => ({ 
-            role: m.role === 'user' ? 'user' : 'model', 
-            parts: [{ text: m.content }] 
-          })), 
-          { role: 'user', parts: [{ text: userMessage }] }
-        ],
-        config: {
-          systemInstruction: getSystemInstruction(portfolioData),
-          temperature: 0.7,
-        }
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages,
+          userMessage,
+        }),
       });
 
-      const text = response.text || "I'm sorry, I couldn't process that request.";
+      if (!response.ok) {
+        throw new Error('Chat request failed');
+      }
+
+      const data = (await response.json()) as { text?: string };
+      const text = data.text || "I'm sorry, I couldn't process that request.";
       setMessages((prev) => [...prev, { role: 'assistant', content: text }]);
     } catch (error) {
       console.error('Chat error:', error);
