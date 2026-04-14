@@ -2,14 +2,22 @@
 
 import * as React from "react";
 import { motion } from "motion/react";
+import { Menu, X } from "lucide-react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  React.useEffect(() => {
+    const closeMenu = () => setMobileOpen(false);
+    window.addEventListener("resize", closeMenu);
+    return () => window.removeEventListener("resize", closeMenu);
   }, []);
 
   return (
@@ -39,8 +47,39 @@ export function Navbar() {
               </a>
             ))}
           </div>
+
+          <button
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="md:hidden p-2 rounded-xl border border-zinc-200 bg-white/80 text-zinc-700"
+          >
+            {mobileOpen ? (
+              <X className="w-5 h-5" />
+            ) : (
+              <Menu className="w-5 h-5" />
+            )}
+          </button>
         </div>
       </div>
+
+      {mobileOpen && (
+        <div className="md:hidden max-w-5xl mx-auto px-6 mt-3">
+          <div className="rounded-2xl border border-zinc-200 bg-white/95 backdrop-blur-md p-4 flex flex-col gap-3 shadow-sm">
+            {["About", "Experience", "Projects", "Contact"].map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase()}`}
+                className="text-sm font-medium text-zinc-700 hover:text-blue-600 transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
     </motion.nav>
   );
 }
