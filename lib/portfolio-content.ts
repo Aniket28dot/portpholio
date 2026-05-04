@@ -31,6 +31,7 @@ export type WritingItem = {
   url: string;
   notionUrl?: string;
   categories?: string[];
+  category?: string; // Kept for backward compatibility with older cached data
 };
 
 export type GoalItem = {
