@@ -34,10 +34,10 @@ export function Hero({ portfolioData }: { portfolioData: PortfolioContent }) {
           <h2 className="text-blue-600 font-mono text-sm mb-4 tracking-widest uppercase">
             Available for new opportunities
           </h2>
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-zinc-900 dark:text-zinc-50">
             {portfolioData.name}
           </h1>
-          <p className="text-xl md:text-2xl text-zinc-600 max-w-2xl leading-relaxed mb-10">
+          <p className="text-xl md:text-2xl text-zinc-600 dark:text-zinc-400 max-w-2xl leading-relaxed mb-10">
             {portfolioData.role}. {portfolioData.bio}
           </p>
           
@@ -58,7 +58,7 @@ export function Hero({ portfolioData }: { portfolioData: PortfolioContent }) {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-zinc-500 hover:text-zinc-900 transition-colors"
+                    className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
                     aria-label={social.name}
                   >
                     <Icon className="w-5 h-5" />

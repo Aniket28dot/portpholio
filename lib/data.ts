@@ -70,5 +70,63 @@ export const portfolioData = {
     "Pakodas during Rains",
     "Soaking Sun during Winters",
     "Blooming Trees during Spring"
+  ],
+  writings: [
+    {
+      title: "Kaikeyi & Manthara: Devastation by Disinformation",
+      excerpt: "Embedded Notion Blog",
+      date: "May 02, 2026",
+      url: "#",
+      notionUrl: "https://www.notion.so/Kaikeyi-Manthara-Devastation-by-Disinformation-b6d6bd6cad2548ed9183d4c8ddeb5bd2?source=copy_link",
+      categories: ["Mythology", "History"]
+    },
+    {
+      title: "Building Resilient APIs with FastAPI",
+      excerpt: "Lessons learned from building the quick-commerce backend at BPCL.",
+      date: "Oct 12, 2025",
+      url: "https://example.com/blog/fastapi-resilience",
+      categories: ["Tech", "Backend"]
+    },
+    {
+      title: "Why I Love Clean Architecture",
+      excerpt: "Separating concerns makes your code maintainable and testable.",
+      date: "Aug 05, 2025",
+      url: "https://example.com/blog/clean-architecture",
+      categories: ["Tech", "Architecture"]
+    }
+  ],
+  goals: [
+    {
+      title: "Master Rust Programming",
+      deadline: "Dec 31, 2026",
+      status: "pending" as const
+    },
+    {
+      title: "Launch Personal AI Assistant",
+      deadline: "Jun 01, 2026",
+      status: "completed" as const,
+      completedDate: "May 15, 2026"
+    },
+    {
+      title: "Run a Half Marathon",
+      deadline: "Nov 20, 2026",
+      status: "pending" as const
+    }
+  ],
+  streaks: [
+    {
+      title: "Morning Run",
+      value: "45",
+      label: "Days Streak",
+      date: "Last run: Today",
+      icon: "activity"
+    },
+    {
+      title: "Open Source Contributions",
+      value: "12",
+      label: "Weeks Streak",
+      date: "Last PR: Yesterday",
+      icon: "git-commit"
+    }
   ]
 };
