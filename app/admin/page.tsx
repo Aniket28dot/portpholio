@@ -18,46 +18,7 @@ export default function AdminPage() {
   const [user, setUser] = React.useState<User | null>(null);
   const [isReady, setIsReady] = React.useState(false);
 
-  const [notionUrl, setNotionUrl] = React.useState("");
-  const [notionCategory, setNotionCategory] = React.useState("");
-  const [notionTitle, setNotionTitle] = React.useState("");
-  const [notionExcerpt, setNotionExcerpt] = React.useState("");
 
-  const handleAddNotionBlog = () => {
-    if (!notionUrl || !notionTitle) {
-      setError("Title and Notion URL are required.");
-      return;
-    }
-    
-    try {
-      const parsed = JSON.parse(jsonText) as PortfolioContent;
-      
-      const categoriesArray = notionCategory
-        ? notionCategory.split(',').map(c => c.trim()).filter(Boolean)
-        : ["Uncategorized"];
-
-      const newWriting = {
-        title: notionTitle,
-        excerpt: notionExcerpt || "Embedded Notion Blog",
-        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }),
-        url: "#",
-        notionUrl: notionUrl,
-        categories: categoriesArray
-      };
-
-      parsed.writings = [newWriting, ...(parsed.writings || [])];
-      
-      setJsonText(JSON.stringify(parsed, null, 2));
-      setNotionUrl("");
-      setNotionTitle("");
-      setNotionCategory("");
-      setNotionExcerpt("");
-      setStatus("Notion blog added to the JSON below. Click 'Save Content' or 'Publish Live' to apply.");
-      setError(null);
-    } catch {
-      setError("Failed to parse JSON. Please fix any errors before adding a blog.");
-    }
-  };
 
   React.useEffect(() => {
     let unsub: (() => void) | null = null;
@@ -200,50 +161,7 @@ export default function AdminPage() {
             </div>
           </div>
 
-          {/* Quick Add Notion Blog Form */}
-          <div className="mb-8 p-4 border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/50 rounded-xl">
-            <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mb-3">Quick Add Notion Blog</h3>
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-col md:flex-row gap-3">
-                <input
-                  type="text"
-                  placeholder="Blog Title"
-                  value={notionTitle}
-                  onChange={(e) => setNotionTitle(e.target.value)}
-                  className="flex-1 px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 outline-none focus:border-blue-500 bg-white dark:bg-zinc-900 dark:text-white"
-                />
-                <input
-                  type="text"
-                  placeholder="Notion URL"
-                  value={notionUrl}
-                  onChange={(e) => setNotionUrl(e.target.value)}
-                  className="flex-1 px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 outline-none focus:border-blue-500 bg-white dark:bg-zinc-900 dark:text-white"
-                />
-              </div>
-              <div className="flex flex-col md:flex-row gap-3">
-                <input
-                  type="text"
-                  placeholder="Excerpt (Optional)"
-                  value={notionExcerpt}
-                  onChange={(e) => setNotionExcerpt(e.target.value)}
-                  className="flex-1 px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 outline-none focus:border-blue-500 bg-white dark:bg-zinc-900 dark:text-white"
-                />
-                <input
-                  type="text"
-                  placeholder="Categories (comma-separated)"
-                  value={notionCategory}
-                  onChange={(e) => setNotionCategory(e.target.value)}
-                  className="flex-1 md:flex-none md:w-64 px-3 py-2 text-sm rounded-lg border border-zinc-300 dark:border-zinc-700 outline-none focus:border-blue-500 bg-white dark:bg-zinc-900 dark:text-white"
-                />
-                <button
-                  onClick={handleAddNotionBlog}
-                  className="px-4 py-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 text-sm font-medium rounded-lg hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors whitespace-nowrap"
-                >
-                  Add to JSON
-                </button>
-              </div>
-            </div>
-          </div>
+
 
           <label className="block text-sm font-mono uppercase tracking-widest text-zinc-500 mb-3">
             Content JSON

@@ -1,7 +1,7 @@
 export const portfolioData = {
   name: "Aniket Bhatia",
   role: "Backend Developer",
-  bio: "I try to build high-performance web applications with a focus on clean architecture and exceptional user experiences. Based in Mumbai, I specialize in backend development using Python and AI integrations.",
+  bio: "Specializing in high-performance Python backends, AWS Cloud infrastructure, AI integrations, and web application vulnerability mitigations. Based in Mumbai.",
   profileImage: "/profile_image_canva_edit.png",
   socials: [
     { name: "GitHub", url: "https://github.com/Aniket28dot", icon: "Github" as const },
@@ -59,6 +59,15 @@ export const portfolioData = {
       techStack: ["TypeScript", "Next.js", "WebRTC", "D3.js", "Node.js"],
       demoUrl: "https://example.com/streamline",
       codeUrl: "https://github.com/example/streamline"
+    },
+    {
+      title: "SaferScans — Privacy-First QR Code Scanner",
+      problem: "QR codes can obscure malicious URLs leading to phishing (quishing), homograph attacks, and hidden redirects without user inspection.",
+      solution: "Built a 100% client-side camera feed decoding engine using jsQR and Web APIs with a security pipeline that analyzes URLs before opening.",
+      impact: "Zero external dependencies or data transmission. Hosted on Cloudflare Pages with automated edge deployment, localized error pages, and dynamic XML sitemaps for SEO.",
+      techStack: ["Astro", "TypeScript", "Tailwind CSS", "Vite", "Cloudflare Pages"],
+      demoUrl: "https://saferscans.com",
+      codeUrl: "#"
     }
   ],
   interests: [
@@ -71,62 +80,5 @@ export const portfolioData = {
     "Soaking Sun during Winters",
     "Blooming Trees during Spring"
   ],
-  writings: [
-    {
-      title: "Kaikeyi & Manthara: Devastation by Disinformation",
-      excerpt: "Embedded Notion Blog",
-      date: "May 02, 2026",
-      url: "#",
-      notionUrl: "https://www.notion.so/Kaikeyi-Manthara-Devastation-by-Disinformation-b6d6bd6cad2548ed9183d4c8ddeb5bd2?source=copy_link",
-      categories: ["Mythology", "History"]
-    },
-    {
-      title: "Building Resilient APIs with FastAPI",
-      excerpt: "Lessons learned from building the quick-commerce backend at BPCL.",
-      date: "Oct 12, 2025",
-      url: "https://example.com/blog/fastapi-resilience",
-      categories: ["Tech", "Backend"]
-    },
-    {
-      title: "Why I Love Clean Architecture",
-      excerpt: "Separating concerns makes your code maintainable and testable.",
-      date: "Aug 05, 2025",
-      url: "https://example.com/blog/clean-architecture",
-      categories: ["Tech", "Architecture"]
-    }
-  ],
-  goals: [
-    {
-      title: "Master Rust Programming",
-      deadline: "Dec 31, 2026",
-      status: "pending" as const
-    },
-    {
-      title: "Launch Personal AI Assistant",
-      deadline: "Jun 01, 2026",
-      status: "completed" as const,
-      completedDate: "May 15, 2026"
-    },
-    {
-      title: "Run a Half Marathon",
-      deadline: "Nov 20, 2026",
-      status: "pending" as const
-    }
-  ],
-  streaks: [
-    {
-      title: "Morning Run",
-      value: "45",
-      label: "Days Streak",
-      date: "Last run: Today",
-      icon: "activity"
-    },
-    {
-      title: "Open Source Contributions",
-      value: "12",
-      label: "Weeks Streak",
-      date: "Last PR: Yesterday",
-      icon: "git-commit"
-    }
-  ]
+  writings: []
 };

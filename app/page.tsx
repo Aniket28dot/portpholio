@@ -41,41 +41,37 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <GlassCard className="p-8 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-12 items-start">
-              <div className="md:col-span-2 space-y-5">
-                <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-2xl overflow-hidden border border-zinc-200/50 dark:border-zinc-700/50 shadow-sm mx-auto md:mx-0">
-                  <Image
-                    src={portfolioData.profileImage}
-                    alt={`${portfolioData.name} profile photo`}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 224px, 176px"
-                    priority
-                  />
-                </div>
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-12 items-center md:items-start">
+              {portfolioData.profileImage && (
+                <div className="md:col-span-2 flex flex-col items-center md:items-start gap-4">
+                  <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-52 md:h-52 rounded-full p-2 bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] neu-flat shrink-0">
+                    <Image
+                      src={portfolioData.profileImage}
+                      alt={`${portfolioData.name} profile photo`}
+                      fill
+                      className="object-cover rounded-full p-1"
+                      sizes="(min-width: 768px) 208px, 192px"
+                      priority
+                    />
+                  </div>
 
-                <div className="flex items-center justify-center md:justify-start gap-2 text-zinc-600">
-                  <MapPin className="w-4 h-4 text-zinc-400" />
-                  <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
-                    Mumbai, Maharashtra
-                  </p>
+                  <div className="flex items-center gap-2 text-zinc-600">
+                    <MapPin className="w-4 h-4 text-zinc-400" />
+                    <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+                      Mumbai, Maharashtra
+                    </p>
+                  </div>
                 </div>
-              </div>
+              )}
 
-              <div className="md:col-span-3">
-                <h2 className="text-3xl font-bold mb-6 text-zinc-900 dark:text-zinc-50">About Me</h2>
+              <div className={portfolioData.profileImage ? "md:col-span-3" : "md:col-span-5"}>
+                <h2 className="text-3xl font-bold mb-6 text-zinc-900 dark:text-zinc-50 text-center md:text-left">About Me</h2>
                 <div className="space-y-4 text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg mb-8">
                   <p>
-                    I&apos;m a software engineer who loves building tools that
-                    empower people. My journey started with a curiosity for how
-                    things work under the hood, which led me to dive deep into web
-                    technologies and eventually AI.
+                    I&apos;m a backend-focused software engineer passionate about building secure, high-performance systems. My expertise spans Python backend development, AWS Cloud infrastructure, and AI integrations.
                   </p>
                   <p>
-                    Currently, I&apos;m focused on exploring the intersection of
-                    human creativity and artificial intelligence. I believe that AI
-                    should be a co-pilot, not a replacement, and I strive to build
-                    backend systems in a way that reflects this philosophy.
+                    I place strong emphasis on web application security and vulnerability mitigations, ensuring scalable architecture remains resilient against modern security threats while delivering seamless user experiences.
                   </p>
                 </div>
 
@@ -89,7 +85,7 @@ export default function Home() {
                         key={interest}
                         className="text-zinc-900 dark:text-zinc-100 font-medium flex items-center gap-2"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)]" />
                         {interest}
                       </li>
                     ))}
@@ -105,15 +101,15 @@ export default function Home() {
 
       <Projects projects={portfolioData.projects} />
 
-      <section id="contact" className="py-20 border-t border-zinc-200/50 dark:border-zinc-800/50 relative z-10">
+      <section id="contact" className="py-20 relative z-10">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="relative overflow-hidden bg-white/40 dark:bg-zinc-900/40 backdrop-blur-md backdrop-saturate-150 border border-white/20 dark:border-white/10 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-[0_8px_32px_0_rgba(0,0,0,0.2)] rounded-[2rem] p-12 md:p-20 text-zinc-900 dark:text-white"
+            className="relative overflow-hidden bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] neu-lg rounded-[2rem] p-12 md:p-20 text-zinc-900 dark:text-white"
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent dark:from-white/5 pointer-events-none" />
+            
             <div className="relative z-10">
               <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
               Let&apos;s build something{" "}
@@ -128,7 +124,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-6">
                 <a
                   href="mailto:alex@example.com"
-                  className="w-full md:w-auto px-10 py-4 bg-blue-600/90 hover:bg-blue-600 text-white rounded-full font-bold shadow-lg shadow-blue-500/20 backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full md:w-auto px-10 py-4 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-full font-bold neu-sm transition-all hover:translate-y-[-2px] active:neu-pressed flex items-center justify-center gap-2"
                 >
                   <Mail className="w-5 h-5" /> Say Hello
                 </a>
@@ -136,7 +132,7 @@ export default function Home() {
                   href="https://linkedin.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full md:w-auto px-10 py-4 border border-zinc-200 dark:border-zinc-700 bg-white/50 dark:bg-zinc-800/50 hover:bg-white/80 dark:hover:bg-zinc-800 text-zinc-900 dark:text-white rounded-full font-bold backdrop-blur-sm transition-all hover:scale-105 flex items-center justify-center gap-2"
+                  className="w-full md:w-auto px-10 py-4 bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] text-zinc-900 dark:text-white rounded-full font-bold neu-sm transition-all hover:translate-y-[-2px] active:neu-pressed flex items-center justify-center gap-2"
                 >
                   LinkedIn <ArrowRight className="w-4 h-4" />
                 </a>
@@ -147,7 +143,7 @@ export default function Home() {
       </section>
 
       <footer className="py-20 relative z-10 overflow-hidden mt-20">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent to-zinc-50 dark:to-zinc-950/50 -z-10" />
+        
         <div className="max-w-5xl mx-auto px-6 flex flex-col items-center text-center">
           <h2 className="text-[12vw] md:text-[8vw] font-black tracking-tighter leading-none text-zinc-900/5 dark:text-white/5 select-none mb-10 hover:text-zinc-900/10 dark:hover:text-white/10 transition-colors duration-500">
             byAniket.com

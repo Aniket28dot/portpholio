@@ -44,7 +44,7 @@ export async function POST(request: Request) {
     const portfolioContent = await fetchPortfolioContent();
 
     const response = await ai.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.0-flash',
       contents: [
         ...(messages ?? []).map((m) => ({
           role: m.role === 'user' ? 'user' : 'model',
@@ -61,10 +61,10 @@ export async function POST(request: Request) {
     return NextResponse.json({
       text: response.text || "I'm sorry, I couldn't process that request.",
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error('API chat error:', error);
     return NextResponse.json(
-      { error: 'Failed to generate response.' },
+      { error: 'Failed to generate response.', details: error?.message || String(error) },
       { status: 500 }
     );
   }

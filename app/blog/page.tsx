@@ -7,7 +7,7 @@ import * as React from "react";
 import { defaultPortfolioContent } from "@/lib/portfolio-content";
 import { fetchPortfolioContent } from "@/lib/portfolio-cms";
 
-export default function WritingsPage() {
+export default function BlogPage() {
   const [portfolioData, setPortfolioData] = React.useState(defaultPortfolioContent);
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ export default function WritingsPage() {
   }, []);
 
   return (
-    <main className="min-h-screen relative z-0 flex flex-col">
+    <main className="min-h-screen relative z-0 flex flex-col bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)]">
       <Navbar />
       <div className="pt-24 flex-grow">
         <Writings writings={portfolioData.writings} />

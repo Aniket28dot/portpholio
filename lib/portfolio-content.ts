@@ -29,24 +29,8 @@ export type WritingItem = {
   excerpt: string;
   date: string;
   url: string;
-  notionUrl?: string;
   categories?: string[];
   category?: string; // Kept for backward compatibility with older cached data
-};
-
-export type GoalItem = {
-  title: string;
-  deadline: string;
-  status: 'pending' | 'completed';
-  completedDate?: string;
-};
-
-export type StreakItem = {
-  title: string;
-  value: string;
-  label: string;
-  date: string;
-  icon: string;
 };
 
 export type PortfolioContent = {
@@ -59,8 +43,6 @@ export type PortfolioContent = {
   projects: ProjectItem[];
   interests: string[];
   writings: WritingItem[];
-  goals: GoalItem[];
-  streaks: StreakItem[];
 };
 
 export const PORTFOLIO_STORAGE_KEY = 'portfolio-content-v1';
@@ -82,9 +64,7 @@ export function getStoredPortfolioContent(): PortfolioContent | null {
       experience: parsed.experience ?? defaultPortfolioContent.experience,
       projects: parsed.projects ?? defaultPortfolioContent.projects,
       interests: parsed.interests ?? defaultPortfolioContent.interests,
-      writings: parsed.writings ?? defaultPortfolioContent.writings,
-      goals: parsed.goals ?? defaultPortfolioContent.goals,
-      streaks: parsed.streaks ?? defaultPortfolioContent.streaks
+      writings: parsed.writings ?? defaultPortfolioContent.writings
     };
   } catch {
     return null;
