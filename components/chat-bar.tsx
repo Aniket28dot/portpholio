@@ -66,12 +66,12 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="mb-4 w-[350px] md:w-[400px] h-[500px] bg-white border border-zinc-200 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="mb-4 w-[350px] md:w-[400px] h-[500px] bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] rounded-2xl neu-lg flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="p-4 border-b border-zinc-100 flex items-center justify-between bg-zinc-50">
+            <div className="p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full bg-[var(--color-accent)] flex items-center justify-center neu-sm">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
                 <div>
@@ -99,7 +99,7 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
                   <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                     msg.role === 'user' 
                       ? 'bg-blue-600 text-white rounded-tr-none' 
-                      : 'bg-zinc-100 text-zinc-900 rounded-tl-none'
+                      : 'bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] text-zinc-800 dark:text-zinc-200 rounded-tl-none neu-pressed-sm'
                   }`}>
                     <div className="prose prose-sm max-w-none">
                       <ReactMarkdown>
@@ -111,7 +111,7 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
               ))}
               {isLoading && (
                 <div className="flex justify-start">
-                  <div className="bg-zinc-100 p-3 rounded-2xl rounded-tl-none">
+                  <div className="bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] p-3 rounded-2xl rounded-tl-none neu-pressed-sm">
                     <Loader2 className="w-4 h-4 animate-spin text-zinc-500" />
                   </div>
                 </div>
@@ -119,7 +119,7 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-zinc-100">
+            <div className="p-4">
               <form 
                 onSubmit={(e) => { e.preventDefault(); handleSend(); }}
                 className="relative"
@@ -129,12 +129,12 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   placeholder="Ask a question..."
-                  className="w-full bg-zinc-100 border-none rounded-xl py-3 pl-4 pr-12 text-sm focus:ring-2 focus:ring-blue-600 transition-all outline-none"
+                  className="w-full bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] border-none rounded-xl py-3 pl-4 pr-12 text-sm neu-pressed focus:ring-2 focus:ring-[var(--color-accent)] transition-all outline-none text-zinc-800 dark:text-zinc-200"
                 />
                 <button 
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:hover:bg-blue-600 transition-all"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 p-2 bg-[var(--color-accent)] text-white rounded-lg neu-sm hover:translate-y-[-1px] active:neu-pressed disabled:opacity-50 transition-all"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -148,7 +148,7 @@ export function ChatBar({ portfolioData }: { portfolioData: PortfolioContent }) 
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(!isOpen)}
-        className="w-14 h-14 bg-blue-600 text-white rounded-full shadow-xl flex items-center justify-center hover:bg-blue-700 transition-colors"
+        className="w-14 h-14 bg-[var(--color-accent)] text-white rounded-full neu-flat flex items-center justify-center hover:translate-y-[-2px] active:neu-pressed transition-all"
       >
         {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
       </motion.button>

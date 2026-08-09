@@ -44,7 +44,7 @@ export function Hero({ portfolioData }: { portfolioData: PortfolioContent }) {
           <div className="flex flex-wrap items-center gap-6">
             <a
               href="#projects"
-              className="px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-medium hover:scale-105 transition-all flex items-center gap-2"
+              className="px-8 py-3 bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] text-white rounded-full font-medium neu-sm hover:translate-y-[-2px] active:neu-pressed transition-all flex items-center gap-2"
             >
               View Work <ArrowRight className="w-4 h-4" />
             </a>
@@ -58,7 +58,7 @@ export function Hero({ portfolioData }: { portfolioData: PortfolioContent }) {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors"
+                    className="p-2.5 rounded-full bg-[var(--color-neu-base)] dark:bg-[var(--color-neu-base-dark)] neu-sm text-zinc-500 dark:text-zinc-400 hover:text-[var(--color-accent)] active:neu-pressed transition-all"
                     aria-label={social.name}
                   >
                     <Icon className="w-5 h-5" />
@@ -72,3 +72,7 @@ export function Hero({ portfolioData }: { portfolioData: PortfolioContent }) {
     </section>
   );
 }
+
+
+
+

@@ -3,9 +3,22 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-accent: #3b82f6;
-  --color-primary: #2563eb;
-  --color-secondary: #60a5fa;
+  --color-accent: #4f8ef7;
+  --color-accent-hover: #3a7ae8;
+  --color-primary: #4f8ef7;
+  --color-secondary: #7eb0ff;
+
+  /* Neumorphic base palette — light */
+  --color-neu-base: #dfe6ed;
+  --color-neu-highlight: #f0f5fa;
+  --color-neu-shadow: #b8c4d0;
+
+  /* Neumorphic base palette — dark */
+  --color-neu-base-dark: #2a3040;
+  --color-neu-highlight-dark: #343c4e;
+  --color-neu-shadow-dark: #1e242e;
+
+  --font-heading: var(--font-heading);
 }
 
 @layer base {
@@ -19,37 +32,27 @@
   }
 
   body {
-    @apply text-zinc-900 dark:text-zinc-100 text-justify transition-colors duration-500 min-h-screen relative overflow-x-hidden;
-    background-color: #f8fafc;
+    @apply text-zinc-800 dark:text-zinc-200 text-justify transition-colors duration-500 min-h-screen relative overflow-x-hidden;
+    background-color: var(--color-neu-base);
   }
   
   .dark body {
-    background-color: #09090b;
+    background-color: var(--color-neu-base-dark);
   }
 
-  /* Animated background mesh gradient */
+  /* Subtle dot pattern for texture */
   body::before {
     content: '';
     position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.06), transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.04), transparent 40%);
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(0,0,0,0.04) 1px, transparent 1px);
+    background-size: 24px 24px;
     z-index: -1;
     pointer-events: none;
-    animation: pulseBg 15s ease-in-out infinite alternate;
-  }
-  
-  .dark body::before {
-    background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.12), transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(96, 165, 250, 0.08), transparent 40%);
   }
 
-  @keyframes pulseBg {
-    0% { transform: scale(1) translate(0, 0); }
-    100% { transform: scale(1.05) translate(-1%, -1%); }
+  .dark body::before {
+    background-image: radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
   }
 
   /* Keep form fields readable; body justify would otherwise inherit */
@@ -61,7 +64,82 @@
   input[type="password"] {
     text-align: left;
   }
+
+  /* Headings use Outfit font */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading), sans-serif;
+  }
 }
+
+/* ================================================================
+   Neumorphic Shadow Utilities
+   ================================================================ */
+
+/* Standard extruded surface */
+.neu-flat {
+  box-shadow: 6px 6px 12px var(--color-neu-shadow),
+              -6px -6px 12px var(--color-neu-highlight);
+}
+.dark .neu-flat {
+  box-shadow: 6px 6px 12px var(--color-neu-shadow-dark),
+              -6px -6px 12px var(--color-neu-highlight-dark);
+}
+
+/* Inset / pressed surface */
+.neu-pressed {
+  box-shadow: inset 4px 4px 8px var(--color-neu-shadow),
+              inset -4px -4px 8px var(--color-neu-highlight);
+}
+.dark .neu-pressed {
+  box-shadow: inset 4px 4px 8px var(--color-neu-shadow-dark),
+              inset -4px -4px 8px var(--color-neu-highlight-dark);
+}
+
+/* Convex / pillow surface */
+.neu-convex {
+  background: linear-gradient(145deg, var(--color-neu-highlight), var(--color-neu-shadow));
+  box-shadow: 6px 6px 12px var(--color-neu-shadow),
+              -6px -6px 12px var(--color-neu-highlight);
+}
+.dark .neu-convex {
+  background: linear-gradient(145deg, var(--color-neu-highlight-dark), var(--color-neu-shadow-dark));
+  box-shadow: 6px 6px 12px var(--color-neu-shadow-dark),
+              -6px -6px 12px var(--color-neu-highlight-dark);
+}
+
+/* Small shadow for compact elements (buttons, tags) */
+.neu-sm {
+  box-shadow: 3px 3px 6px var(--color-neu-shadow),
+              -3px -3px 6px var(--color-neu-highlight);
+}
+.dark .neu-sm {
+  box-shadow: 3px 3px 6px var(--color-neu-shadow-dark),
+              -3px -3px 6px var(--color-neu-highlight-dark);
+}
+
+/* Large shadow for hero / CTA elements */
+.neu-lg {
+  box-shadow: 10px 10px 20px var(--color-neu-shadow),
+              -10px -10px 20px var(--color-neu-highlight);
+}
+.dark .neu-lg {
+  box-shadow: 10px 10px 20px var(--color-neu-shadow-dark),
+              -10px -10px 20px var(--color-neu-highlight-dark);
+}
+
+/* Pressed variant for small elements */
+.neu-pressed-sm {
+  box-shadow: inset 2px 2px 4px var(--color-neu-shadow),
+              inset -2px -2px 4px var(--color-neu-highlight);
+}
+.dark .neu-pressed-sm {
+  box-shadow: inset 2px 2px 4px var(--color-neu-shadow-dark),
+              inset -2px -2px 4px var(--color-neu-highlight-dark);
+}
+
+/* ================================================================
+   Prose & Article Body Styling
+   ================================================================ */
 
 .prose p {
   margin-top: 0.5rem;
@@ -75,3 +153,81 @@
 .prose p:last-child {
   margin-bottom: 0;
 }
+
+/* Article Body HTML Formatting (Dev.to / Markdown HTML) */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.article-body th,
+.article-body td {
+  border: 1px solid rgba(160, 174, 192, 0.4);
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.dark .article-body th,
+.dark .article-body td {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.article-body th {
+  background-color: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.dark .article-body th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.article-body pre {
+  background-color: #1e1e2e !important;
+  color: #f8f8f2 !important;
+  padding: 1.25rem;
+  border-radius: 0.75rem;
+  overflow-x: auto;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.article-body pre code {
+  background: transparent !important;
+  padding: 0 !important;
+  color: inherit !important;
+  font-size: inherit;
+  white-space: pre;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+.article-body :not(pre) > code {
+  background-color: rgba(0, 0, 0, 0.07);
+  color: #2563eb;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.dark .article-body :not(pre) > code {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #60a5fa;
+}
+
+/* Hide Dev.to codeblock maximize/minimize action panel icons */
+.article-body .highlight__panel,
+.article-body .highlight-action,
+.article-body .js-actions-panel,
+.article-body .js-fullscreen-code-action,
+.article-body .fullscreen-code-btn {
+  display: none !important;
+}
+
